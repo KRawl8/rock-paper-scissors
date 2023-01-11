@@ -54,11 +54,11 @@ let game = () => {
     }
 
     if (playerScore > computerScore) {
-        console.log("You Win!");
+        return "You Win!";
     } else if (playerScore === computerScore) {
-        console.log("It's a draw");
+        return "It's a draw";
     } else {
-        console.log("You Lose!");
+        return "You Lose!";
     }
 }
 console.log(game());
