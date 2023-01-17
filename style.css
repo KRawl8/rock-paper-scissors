@@ -1,0 +1,56 @@
+* {
+    background-color: rgb(49, 49, 173);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#results {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+div, button {
+    color: azure;
+}
+
+#buttons {
+    display: flex;
+    
+}
+
+button {
+    height: 200px;
+    width: 200px;
+    border: 10px solid black;
+    border-radius: 20px;
+    margin: 40px;
+    background-color: rgb(38, 74, 141);
+}
+
+#choices {
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.choicePair {
+    display: flex;
+    flex-direction: column;
+    margin: 40px;
+} 
+
+#scores {
+    display: flex;
+    justify-content: space-between;
+}
+
+#scores div {
+    margin: 80px;
+    font-size: 60px;
+}

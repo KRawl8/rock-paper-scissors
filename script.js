@@ -22,8 +22,6 @@ let playRound = (playerSelection, computerSelection) => {
   
     whoWon.textContent = "";
 
-    // console.log(`Computers choice: ${computerSelection}`);
-    // console.log(`Players choice: ${playerSelection}`);
     if (playerSelection === computerSelection) {
         roundResult.textContent = `You both chose ${playerSelection}. It's a draw!`;
     } else if (playerSelection === "Rock") {
