@@ -13,52 +13,70 @@ let getComputerChoice = () => {
 }
 
 let playRound = (playerSelection, computerSelection) => {
-    console.log(`Computers choice: ${computerSelection}`);
-    console.log(`Players choice: ${playerSelection}`);
+
+    const choicePlayer = document.querySelector('#playerChoice');
+    choicePlayer.textContent = playerSelection;
+
+    const choiceComputer = document.querySelector('#computerChoice');
+    choiceComputer.textContent = computerSelection;
+  
+    whoWon.textContent = "";
+
+    // console.log(`Computers choice: ${computerSelection}`);
+    // console.log(`Players choice: ${playerSelection}`);
     if (playerSelection === computerSelection) {
-        return `You both chose ${playerSelection}. It's a draw!`;
+        roundResult.textContent = `You both chose ${playerSelection}. It's a draw!`;
     } else if (playerSelection === "Rock") {
         if (computerSelection === "Scissors") {
             playerScore++;
-            return `You win! ${playerSelection} beats ${computerSelection}`;
+            roundResult.textContent = `You win! ${playerSelection} beats ${computerSelection}`;
         } else {
             computerScore++;
-            return `You lose! ${computerSelection} beats ${playerSelection}`;
+            roundResult.textContent = `You lose! ${computerSelection} beats ${playerSelection}`;
         }
     } else if (playerSelection === "Paper") {
         if (computerSelection === "Rock") {
             playerScore++;
-            return `You win! ${playerSelection} beats ${computerSelection}`;
+            roundResult.textContent = `You win! ${playerSelection} beats ${computerSelection}`;
         } else {
             computerScore++;
-            return `You lose! ${computerSelection} beats ${playerSelection}`;
+            roundResult.textContent = `You lose! ${computerSelection} beats ${playerSelection}`;
         }
     } else if (playerSelection === "Scissors") {
         if (computerSelection === "Paper") {
             playerScore++;
-            return `You win! ${playerSelection} beats ${computerSelection}`;
+            roundResult.textContent = `You win! ${playerSelection} beats ${computerSelection}`;
         } else {
             computerScore++;
-            return `You lose! ${computerSelection} beats ${playerSelection}`;
+            roundResult.textContent = `You lose! ${computerSelection} beats ${playerSelection}`;
         }
     }    
-}
 
-let game = () => {
-    for (let i = 0; i < 5; i++) {
-        let playerChoice = prompt("Choose Rock, Paper or Scissors");
-        let playerSelection = playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1).toLowerCase();
-        let computerSelection = getComputerChoice();
-        console.log(playRound(playerSelection, computerSelection));
-        console.log(`Player Score: ${playerScore} | Computer Score: ${computerScore}`);
+    scorePlayer.textContent = playerScore;
+    scoreComputer.textContent = computerScore;
+    
+    if (playerScore === 5) {
+        playerScore = 0;
+        computerScore = 0;
+        whoWon.textContent = "You win!";
+    } else if (computerScore === 5) {
+        playerScore = 0;
+        computerScore = 0;
+        whoWon.textContent = "You Lose!";
     }
 
-    if (playerScore > computerScore) {
-        return "You Win!";
-    } else if (playerScore === computerScore) {
-        return "It's a draw";
-    } else {
-        return "You Lose!";
-    }
 }
-console.log(game());
+
+const roundResult = document.querySelector('#whoWonTheRound');
+
+const scorePlayer = document.querySelector('#playerScore');
+const scoreComputer = document.querySelector('#computerScore');
+
+const whoWon = document.querySelector('#whoWonTheGame');
+
+const buttons = document.querySelectorAll("button");
+buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+        playRound(button.textContent, getComputerChoice());
+    });
+});
